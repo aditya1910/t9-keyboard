@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script></head>
+<script>
+
+var coun =-1 ;
+var startTime;     // for long press even if endTime - StartTime > 1000 long press action will be taken 
+var endTime;
+var pre;
+var timer;
+var text1 = "" ;
+
+
+$(document).ready(function() {
+
+  $("#phone").find("button").mousedown(function(event) { 
+     startTime = new Date().getTime();
+     coun++;
+     clearTimeout(timer);
+  })
+ 
+  $("#phone").find("button").mouseup(function(event) {
+    endTime = new Date().getTime();
+    var button_pressed = $(event.currentTarget).data("value")
+    if(pre == button_pressed)        // check weather previous button is same to current button pressed 
+      {}
+      else
+        coun = 0;
+		
+		t9(button_pressed);
+    //$("#result").val(t9($("#result").val(), button_pressed))
+  })
+})
+
+function t9(button_pressed) {
+  
+  pre = button_pressed;
+  var arr1 = [".", ",", "!"];
+  var arr2 = ["a", "b", "c"];
+  var arr3 = ["d", "e", "f"];
+  var arr4 = ["g", "h", "i"];
+  var arr5 = ["j", "k", "l"];
+  var arr6 = ["m", "n", "o"];
+  var arr7 = ["p", "q", "r", "s"];
+  var arr8 = ["y", "u", "v"];
+  var arr9 = ["w", "x", "y", "z"];
+
+  switch (button_pressed) {
+
+  case 1:
+       if(endTime-startTime > 1000)
+            {
+              text1 += 1;
+               $("#result").val(text1);
+              coun=-1;
+            }
+          else
+      timer = setTimeout(function set(){ text1+=arr1[coun]; console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+      break;
+
+       case 2:
+       if(endTime-startTime > 1000)
+            {
+              text1+= 2;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+   timer= setTimeout(function(){text1+=arr2[coun]; console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+    case 3:
+    if(endTime-startTime > 1000)
+            {
+              text1+= 3;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+    timer=setTimeout(function(){text1+=arr3[coun]; console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+     case 4:
+     if(endTime-startTime > 1000)
+            {
+              text1+= 4;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+    timer=setTimeout(function(){text1+=arr4[coun];  console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+     case 5:
+     if(endTime-startTime > 1000)
+            {
+              text1 += 5;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+    timer=setTimeout(function(){text1+=arr5[coun]; console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+     case 6:
+     if(endTime-startTime > 1000)
+            {
+              text1 += 6;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+    timer=setTimeout(function(){text1+=arr6[coun];  console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+     case 7:
+     if(endTime-startTime > 1000)
+           {
+              text1 += 7;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+   timer= setTimeout(function(){text1+=arr7[coun]; console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+     case 8:
+     if(endTime-startTime > 1000)
+            {
+              text1 += 8;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+   timer= setTimeout(function(){text1+=arr8[coun];console.log(coun) ;  $("#result").val(text1); coun=-1; }, 1000);
+    break;
+
+     case 9:
+     if(endTime-startTime > 1000)
+       {
+              text1 += 9;
+              $("#result").val(text1);
+              coun=-1;
+            }
+          else
+   timer= setTimeout(function(){text1 += arr9[coun]; console.log(coun); $("#result").val(text1); coun=-1; }, 1000);
+    break;
+    default:
+    if (button_pressed == "*")
+       {text1 += "*";$("#result").val(text1);}
+      if (button_pressed == "0")
+       { text1 += "0"; $("#result").val(text1);}
+      if (button_pressed == "#")
+      {text1 += "#"; $("#result").val(text1);}
+      break;
+}
+
+}
+
+
+</script>
+
+
+<table id="phone">
+  <tr>
+    <td colspan="3">
+      <input type="text" id="result" />
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button data-value="1" class="key">1
+        <span>. , !</span>
+      </button>
+    </td>
+    <td>
+      <button data-value="2" class="key">2
+        <span>a b c</span>
+      </button>
+    </td>
+    <td>
+      <button data-value="3" class="key">3
+        <span>d e f</span>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button data-value="4" class="key">4
+        <span>g h i</span>
+      </button>
+    </td>
+    <td>
+      <button data-value="5" class="key">5
+        <span>j k l</span>
+      </button>
+    </td>
+    <td>
+      <button data-value="6" class="key">6
+        <span>m n o</span>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button data-value="7" class="key">7
+        <span>p q r s</span>
+      </button>
+    </td>
+    <td>
+      <button data-value="8" class="key">8
+        <span>t u v</span>
+      </button>
+    </td>
+    <td>
+      <button data-value="9" class="key">9
+        <span>w x y z</span>
+      </button>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button data-value="*" class="key">*</button>
+    </td>
+    <td>
+      <button data-value="0" class="key">0</button>
+    </td>
+    <td>
+      <button data-value="#" class="key">#</button>
+    </td>
+  </tr>
+</table>
+</html>
